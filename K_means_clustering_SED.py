@@ -16,13 +16,13 @@ def K_means_clustering_standard_SED(X,K):
     centroids_index = random.sample(range(N), K)#Initialize centroids
     centroids=X[centroids_index]
     clusters = asign_clusters(centroids,X,K) #asign to cluster
-    new_centroids=update_centroids(centroids, clusters,X,K) 
+    new_centroids=update_centroids(clusters,X,K) 
 
     number_it=1
     while loss(centroids,clusters,X,K)!= loss(new_centroids,asign_clusters(new_centroids,X,K),X,K): #while the centroids change, then (1) is improving by construction , we can also use > instead
         centroids=new_centroids.copy() #copy, python basic = to copy isn't enougth
         clusters = asign_clusters(centroids,X,K) #asign to cluster
-        new_centroids=update_centroids(centroids,clusters, X,K)
+        new_centroids=update_centroids(clusters, X,K)
         number_it +=1
 
     
@@ -46,7 +46,7 @@ def loss(centroids,clusters,X,K):
             loss+=np.inner(X[i]-centroids[l],X[i]-centroids[l])
     return loss
 
-def update_centroids(centroids,clusters, X,K):
+def update_centroids(clusters, X,K):
     """
     update the new centroids computing the mean on clusters 
     """
