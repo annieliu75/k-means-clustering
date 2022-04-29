@@ -56,7 +56,7 @@ if __name__ == '__main__':
         clusters = asign_clusters(centroids,X,K)
         if data_set== "digits" :
             print("Here are what the centroids looks like : ")
-            print_img.print_digit(X)
+            print_img.print_digit(centroids)
             print("Here are what a sample of the clusters looks like : ")
             print_img.print_digit_clusters(X,clusters,K)    
         else :
