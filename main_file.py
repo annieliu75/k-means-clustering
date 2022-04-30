@@ -16,9 +16,11 @@ from spectral_clustering import H_constrcution
 ### Parameters & settings
 
 k_mean_mode= "Spectral Clustering"  #"SED" ,"Kernelized", "Spectral Clustering" 
+#Note : please use spectral clustering only on mnist dataset, it was tuned for, or change parameter if doing on others data set
+
 data_set= 'digits' # 'digits', 'circle' , 'moon', 'blobs' #select the type of the data set you want to test
 
-N_sample="all_data" #Size of the data, if on all data change to "all_data" : but only if we are working on MNIST 
+N_sample=30000 #Size of the data, if on all data change to "all data" : but only if we are working on MNIST ; otherwise put number
 K=10 #number of clusters
 
 #Parameters for the kernelized mode : 
@@ -32,7 +34,7 @@ if __name__ == '__main__':
     #take the dataset and labels
     if N_sample=='all data': #if all_data, we automatically set to the data_set digits from mnist
         X, y = fetch_openml('mnist_784', version=1, return_X_y=True)
-        X=X.values #convert pandas, dataframe to numpy array
+        X =X.values #convert pandas, dataframe to numpy array
         y=y.values
     else :
         if data_set=='digits':

@@ -8,7 +8,7 @@ def similarity_matrix(X):
   Computes the similarity matrix of X, we here use gaussian kernel, This is already tuned for MNIST dataset
   """
   N=len(X)
-  W = np.zeros([N,N])
+  W = np.zeros((N,N))
   gamma=9e-10 # determined with 700 samples
   for i in range(N):
     for j in [x for x in range(N) if x != i]:
@@ -23,7 +23,7 @@ def laplacian_matrix(X):
   N=len(X)
   I=np.identity(N) #comment for unormalized
   W=similarity_matrix(X)
-  D = np.zeros([N,N])
+  D = np.zeros((N,N))
   for i in range(N):
     for j in range(N):
       D[i,i] = D[i,i]+W[i,j]

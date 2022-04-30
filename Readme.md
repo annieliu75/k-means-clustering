@@ -25,3 +25,10 @@ or use main.ipynb
 
 ## Alternative with notebooks
 You can also find in the file notebooks, for the corresponding questions of our code.
+
+
+## Results
+Here are some examples of results you should get with these parameters :
+
+k_mean_mode= "Spectral Clustering" 
+data_set= 'digits'
