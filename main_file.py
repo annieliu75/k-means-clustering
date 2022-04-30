@@ -12,12 +12,13 @@ from K_means_clustering_SED import K_means_clustering_standard_SED
 from K_means_clustering_SED import asign_clusters
 from K_means_clustering_kernels import K_means_clustering_kernel
 from accuracy import accuracy
+from spectral_clustering import H_constrcution
 ### Parameters & settings
 
-k_mean_mode= "SED" #"SED" ,"Kernelized"
+k_mean_mode= "Spectral Clustering"  #"SED" ,"Kernelized", "Spectral Clustering" 
 data_set= 'digits' # 'digits', 'circle' , 'moon', 'blobs' #select the type of the data set you want to test
 
-N_sample=300 #Size of the data, if on all data change to "all_data" : but only if we are working on MNIST 
+N_sample="all_data" #Size of the data, if on all data change to "all_data" : but only if we are working on MNIST 
 K=10 #number of clusters
 
 #Parameters for the kernelized mode : 
@@ -76,3 +77,16 @@ if __name__ == '__main__':
         else :
             print_img.print_2D_clusters(X,clusters,K)    
         print("Using the k-mean clustering with "+ kernel_name+ " on our dataset we were able to get an accuracy of " + str(accuracy(clusters,y,K)))
+
+    elif k_mean_mode=="Spectral Clustering" :
+        """
+        Note : by default it is set to normalized spectral clustering, and it is tuned for MNIST dataset
+        If you want to change to unormalized spectral clustering change in the file spectral_clustering.py
+        If you want to see test on 2D moon data, go see the notebook in Notebooks/Working Test on 2D data set, and Unormalized_Normalized_spectral_clustering_on_moon.ipynb
+        """
+        H=H_constrcution(X,K) #add print_first_eig_val=True in arguments if you want to see the eigenvalues
+        centroids=K_means_clustering_standard_SED(H,K)
+        clusters = asign_clusters(centroids,H,K) #cluster result
+        print("Using the normalized standard clustering with Gaussian kernel on our dataset we were able to get an accuracy of " + str(accuracy(clusters,y,K)))
+        print("Here are what a sample of the clusters looks like : ")
+        print_img.print_digit_clusters(X,clusters,K)    
