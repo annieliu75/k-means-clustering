@@ -49,3 +49,22 @@ def H_constrcution(X,K,print_first_eig_val=False):
     plt.plot(range(100),EV[0:100], 'rx')
   H = V[:, :K] #first K vects
   return H
+
+def H_constrcution_eigensolver(X,K,print_first_eig_val=False):
+  """
+  Computes H whose columns are the eigenvectors corresponding to the K minimal eigenvalues of L.
+  Eigenvectors are found using QR based eigensolver
+  """
+  N=len(X)
+  H = np.zeros([K,N])
+  L = laplacian_matrix(X)
+  EV,V = QR_Eigensolver(L) #we get the EV : eigen values, and V : eign vectors of Laplacian
+  V = np.real(V) #to have real only
+  EV=np.abs(EV) #we are interested in how close they are to 0
+  idx = EV.argsort()  
+  EV=EV[idx]
+  V=V[:,idx]
+  if print_first_eig_val: #if we want to print first eigen values
+    plt.plot(range(100),EV[0:100], 'rx')
+  H = V[:, :K] #first K vects
+  return H
