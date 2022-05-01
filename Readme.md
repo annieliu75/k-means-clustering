@@ -62,8 +62,9 @@ This version of the code should work on python 3.10.4
 On older version, one of the issue you can enconter is that when importing MNIST data set, images and labels are already numpy array type, in that case change in main_file.py :
 - comment line 37 and 38
 - in line 42 and 43, change to 
-```X=X.values[0:N_sample]
-y=y.values[0:N_sample]  
+```
+X=X[0:N_sample]
+y=y[0:N_sample]  
 ```
 
 ## There may still be some issues when trying with differents parameters, we haven't been able to try every combinaison yet
