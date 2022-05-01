@@ -91,4 +91,17 @@ if __name__ == '__main__':
         clusters = asign_clusters(centroids,H,K) #cluster result
         print("Using the normalized standard clustering with Gaussian kernel on our dataset we were able to get an accuracy of " + str(accuracy(clusters,y,K)))
         print("Here are what a sample of the clusters looks like : ")
-        print_img.print_digit_clusters(X,clusters,K)    
+        print_img.print_digit_clusters(X,clusters,K) 
+       
+    elif k_mean_mode=="Spectral Clustering CustomEigensolver" :
+        """
+        Note : by default it is set to normalized spectral clustering, and it is tuned for MNIST dataset
+        If you want to change to unormalized spectral clustering change in the file spectral_clustering.py
+        If you want to see test on 2D moon data, go see the notebook in Notebooks/Working Test on 2D data set, and Unormalized_Normalized_spectral_clustering_on_moon.ipynb
+        """
+        H=H_constrcution_eigensolver(X,K) #add print_first_eig_val=True in arguments if you want to see the eigenvalues
+        centroids=K_means_clustering_standard_SED(H,K)
+        clusters = asign_clusters(centroids,H,K) #cluster result
+        print("Using the normalized standard clustering with Gaussian kernel on our dataset we were able to get an accuracy of " + str(accuracy(clusters,y,K)))
+        print("Here are what a sample of the clusters looks like : ")
+        print_img.print_digit_clusters(X,clusters,K) 
