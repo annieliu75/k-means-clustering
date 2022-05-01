@@ -10,7 +10,7 @@ We here attempt to implement K-mean clustering :
  - implement our eigensolver (for K-smallest eigenvalues, and in certains conditions on L laplacian matrix)
 
 ## How to use the code
-1- set the setting in main_file.py, here you can set the mode, the data set, the number of sample we want to perform on (change to "all_data" if you want to run it on all data), the kernel you want to use
+1- set the setting in main_file.py, here you can set the mode, the data set, the number of sample we want to perform on (change to "all data" if you want to run it on all data), the kernel you want to use
 
 2- note : if you want to change kernel parameters go in kernels_functions.py and change it manually
 [       Sigma is for Gaussian and Laplace kernel
