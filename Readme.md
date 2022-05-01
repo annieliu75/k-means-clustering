@@ -31,30 +31,41 @@ You can also find in the file notebooks, for the corresponding questions of the 
 
 ## Results
 Here are some examples of results you should get with these parameters :
+
 1- SED 
 ```
-Parameters
+k_mean_mode= "SED"
+data_set= 'digits'
+N_sample="all data"
+K=10
 ```
 ```
-Results
+Using the k-mean clustering without kernel on our dataset we were able to get an accuracy of 0.5909714285714286
 ```
 2- Kernelized
 ```
-Parameters
+k_mean_mode= "Kernelized"
+data_set= 'digits'
+N_sample=700
+K=10
+kernel_name='Sigmoid Kernel'
 ```
 ```
-Results
+Using the k-mean clustering with Polynomial Kernel on our dataset we were able to get an accuracy of 0.5242857142857142
 ```
 3- Spectral Clustering
 ```
-Parameters
+k_mean_mode= "Spectral Clustering"
+data_set= 'digits'
+N_sample=10000 #But we can try with 700, and it is really fast if we just want to test on 700 sample
+K=10
 ```
 ```
-Results
+Using the normalized standard clustering with gaussian kernel on our dataset we were able to get an accuracy of 0.5924
 ```
-#Number of clusters 
+## Number of clusters 
 By default when clustering on MNIST data set we would always put the number of clusters to K=10, but we got better results if we put it to K=20 for example...  
-It can be explained by the fact a same digit can be writed differently [example 0 or O], or writed in diagonal and so on...
+It can be explained by the fact a same digit can be writed differently [example 0 or O], or writen in diagonal and so on...
 
 
 ## Version
