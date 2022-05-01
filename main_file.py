@@ -20,7 +20,7 @@ k_mean_mode= "Spectral Clustering"  #"SED" ,"Kernelized", "Spectral Clustering"
 
 data_set= 'digits' # 'digits', 'circle' , 'moon', 'blobs' #select the type of the data set you want to test
 
-N_sample=30000 #Size of the data, if on all data change to "all data" : but only if we are working on MNIST ; otherwise put number
+N_sample=700 #Size of the data, if on all data change to "all data" : but only if we are working on MNIST ; otherwise put number
 K=10 #number of clusters
 
 #Parameters for the kernelized mode : 
