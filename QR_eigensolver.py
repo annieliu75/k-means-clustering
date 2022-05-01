@@ -8,7 +8,7 @@ def QR_algo(A):
   TOL=10e-2
   N=1000 #another criteria.
 
-  #Initialise variables
+  #Initialise variables and matrices
   k=1
   D = np.diag(np.diag(A))
   L = np.tril(A)-D
@@ -20,7 +20,7 @@ def QR_algo(A):
     Q,R=QR_factorisation(A) #QR factorize A
     S = np.dot(S,Q) #S is product of all previous Q
 
-    A = np.dot(R,Q)
+    A = np.dot(R,Q) #Define new A iteration
         
     D = np.diag(np.diag(A)) #D will contain eigenvalues
     L = np.tril(A)-D
@@ -39,18 +39,20 @@ def QR_factorisation(A):
   n,m = A.shape
 
   Q = np.empty((n,n))
-  X = np.empty((n,n))
+  X = np.empty((n,n)) #Auxilliary array
 
   Q[:,0] = A[:,0]/np.linalg.norm(A[:,0])
   X[:,0] = A[:,0]
 
+  #Iteration of Gram-Schmidt procedure
   for i in range(1,n):
     X[:,i] = A[:,i]
     for j in range(i):
-      X[:,i] = X[:,i] - np.inner(A[:,i],Q[:,j])*Q[:,j]
+      X[:,i] = X[:,i] - np.inner(A[:,i],Q[:,j])*Q[:,j] #Orthogonalization
 
-    Q[:,i] = X[:,i]/np.linalg.norm(X[:,i])
+    Q[:,i] = X[:,i]/np.linalg.norm(X[:,i]) #Normalize
   
+  #Define R matrix using found Q
   R = np.zeros((n,m))
   for i in range(n):
     for j in range(m):
@@ -66,6 +68,6 @@ def QR_Eigensolver(A):
   """
 
   Q,D = QR_algo(A)
-  ordering = np.argsort(abs(np.diag(D)))
-  
+  ordering = np.argsort(abs(np.diag(D))) #Sort eigenvalues from small to large
+  #Return sorted eigenvalues and sorted column vectors
   return np.diag(D)[ordering], Q[:,ordering]
