@@ -1,11 +1,13 @@
 ## K-means clustering
 
 This is the project for the course "Linear algebra and optimization for Machine Learning"
-We here attempt to code K-mean clustering :
+We here attempt to implement K-mean clustering :
  - with standard squared Euclidean distance
- - kernelized distance with some kernels (and using the "kernel" trick)
+ - kernelized distance with some kernels (and using the "kernel" trick)  
 
+  
  - unormalized and normalized spectral clustering
+ - implement our eigensolver (for K-smallest eigenvalues, and in certains conditions on L laplacian matrix)
 
 ## How to use the code
 1- set the setting in main_file.py, here you can set the mode, the data set, the number of sample we want to perform on (change to "all_data" if you want to run it on all data), the kernel you want to use
@@ -19,19 +21,40 @@ We here attempt to code K-mean clustering :
 
 3- to run the code do :
 ```shell script
-    python main_file.py
+    python3 main_file.py
 ```
 or use main.ipynb
 
 ## Alternative with notebooks
-You can also find in the file notebooks, for the corresponding questions of our code.
+You can also find in the file notebooks, for the corresponding questions of the project and some tests on 2D data for example....
 
 
 ## Results
 Here are some examples of results you should get with these parameters :
-
-k_mean_mode= "Spectral Clustering" 
-data_set= 'digits'
+1- SED 
+```
+Parameters
+```
+```
+Results
+```
+2- Kernelized
+```
+Parameters
+```
+```
+Results
+```
+3- Spectral Clustering
+```
+Parameters
+```
+```
+Results
+```
+#Number of clusters 
+By default when clustering on MNIST data set we would always put the number of clusters to K=10, but we got better results if we put it to K=20 for example...  
+It can be explained by the fact a same digit can be writed differently [example 0 or O], or writed in diagonal and so on...
 
 
 ## Version
